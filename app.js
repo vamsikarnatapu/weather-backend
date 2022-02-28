@@ -22,16 +22,29 @@ app.post('/v1/auth', post_data)
 
 
 function get_weather_v1(request, response){
-  response.send(resp)
+  var token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  if(request.body.token == token1){
+    response.send(resp)
+  }
+  else{
+    console.log("Token Not Matching")
+  }
 }
 
 function get_hello(request, response){
-  response.send("Hi! I am Vamsi")
+  var token2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  if(request.body.token == token2){
+    response.send("Hi! I am Vamsi")
+  }
+  else{
+    console.log("Token Not Matching")
+  }
+  
 }
 
 function post_data(request, response){
   
-  let usernames = ["Vamsi", "vinoothna", "Arjun"]
+  let usernames = ["Vamsi", "Vinoothna", "Arjun"]
   let passwords = ["123", "456", "789"]
   var username = request.body.username
   var pwd = request.body.password
@@ -49,7 +62,14 @@ function post_data(request, response){
       response.json(res_json)
       
     }
-    }
+  
+  
+  
 }
+
+}
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
+})
